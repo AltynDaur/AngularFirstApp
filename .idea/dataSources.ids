@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="H2 - ScheduleDB" uuid="6b42ed2b-6269-43c7-8c06-2aa16ee1b8d8">
+    <database-info product="H2" version="1.3.175 (2014-01-18)" jdbc-version="4.0" driver-name="H2 JDBC Driver" driver-version="1.3.175 (2014-01-18)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <schema name="PUBLIC" catalog="SCHEDULEDB"/>
+    <table name="CHAIR" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_3" columns="ID"/>
+      <exported-key name="FK_MLOREY85XVSLGA7E86I2FWGVI" table="SUBJECT" schema="PUBLIC" catalog="SCHEDULEDB" columns="CHAIR_ID"/>
+      <exported-key name="FK_5VCH6UV24VQFAK6QXT4T8V0FR" table="TEACHER" schema="PUBLIC" catalog="SCHEDULEDB" columns="CHAIR_ID"/>
+    </table>
+    <table name="CLASS" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="LOCALTIME" sqlType="VARBINARY" precision="255" scale="0" nullable="true" jdbcType="-3"/>
+      <column name="CLASSDAY_ID" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="GROUP_ID" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="SUBJECT_ID" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="TEACHER_ID" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="CONSTRAINT_3D" columns="ID"/>
+      <foreign-key name="FK_8UJIQID68MH6UCY4VSPC5XVHV" columns="CLASSDAY_ID" ref-table="CLASSDAY" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FK_6E3CABLC12U746UK1B7LUE3QS" columns="SUBJECT_ID" ref-table="SUBJECT" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FK_2AEY07WA3WRBVG2VQG24WKLKW" columns="TEACHER_ID" ref-table="TEACHER" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <exported-key name="FK_5VSXJIHP0OQSBYRI99K6ECWQF" table="CLASSDAY_CLASS" schema="PUBLIC" catalog="SCHEDULEDB" columns="CLASSES_ID"/>
+      <index name="FK_2AEY07WA3WRBVG2VQG24WKLKW_INDEX_3" unique="false" columns="TEACHER_ID"/>
+      <index name="FK_6E3CABLC12U746UK1B7LUE3QS_INDEX_3" unique="false" columns="SUBJECT_ID"/>
+      <index name="FK_8UJIQID68MH6UCY4VSPC5XVHV_INDEX_3" unique="false" columns="CLASSDAY_ID"/>
+    </table>
+    <table name="CLASSDAY" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="LOCALDATE" sqlType="VARBINARY" precision="255" scale="0" nullable="true" jdbcType="-3"/>
+      <primary-key name="CONSTRAINT_5" columns="ID"/>
+      <exported-key name="FK_8UJIQID68MH6UCY4VSPC5XVHV" table="CLASS" schema="PUBLIC" catalog="SCHEDULEDB" columns="CLASSDAY_ID"/>
+      <exported-key name="FK_CQY5FT4VIFYYWH5EGLDSMKV17" table="CLASSDAY_CLASS" schema="PUBLIC" catalog="SCHEDULEDB" columns="CLASSDAY_ID"/>
+    </table>
+    <table name="CLASSDAY_CLASS" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
+      <column name="CLASSDAY_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="CLASSES_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <foreign-key name="FK_5VSXJIHP0OQSBYRI99K6ECWQF" columns="CLASSES_ID" ref-table="CLASS" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FK_CQY5FT4VIFYYWH5EGLDSMKV17" columns="CLASSDAY_ID" ref-table="CLASSDAY" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="UK_5VSXJIHP0OQSBYRI99K6ECWQF_INDEX_2" unique="true" columns="CLASSES_ID"/>
+      <index name="FK_CQY5FT4VIFYYWH5EGLDSMKV17_INDEX_2" unique="false" columns="CLASSDAY_ID"/>
+    </table>
+    <table name="LOGINPERSON" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="LOGIN" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARBINARY" precision="255" scale="0" nullable="true" jdbcType="-3"/>
+      <column name="SALT" sqlType="VARBINARY" precision="255" scale="0" nullable="true" jdbcType="-3"/>
+      <primary-key name="CONSTRAINT_F" columns="ID"/>
+    </table>
+    <table name="SUBJECT" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CHAIR_ID" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="CONSTRAINT_B" columns="ID"/>
+      <foreign-key name="FK_MLOREY85XVSLGA7E86I2FWGVI" columns="CHAIR_ID" ref-table="CHAIR" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <exported-key name="FK_6E3CABLC12U746UK1B7LUE3QS" table="CLASS" schema="PUBLIC" catalog="SCHEDULEDB" columns="SUBJECT_ID"/>
+      <index name="FK_MLOREY85XVSLGA7E86I2FWGVI_INDEX_B" unique="false" columns="CHAIR_ID"/>
+    </table>
+    <table name="TEACHER" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="FIRSTNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LASTNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CHAIR_ID" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="CONSTRAINT_D" columns="ID"/>
+      <foreign-key name="FK_5VCH6UV24VQFAK6QXT4T8V0FR" columns="CHAIR_ID" ref-table="CHAIR" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <exported-key name="FK_2AEY07WA3WRBVG2VQG24WKLKW" table="CLASS" schema="PUBLIC" catalog="SCHEDULEDB" columns="TEACHER_ID"/>
+      <index name="FK_5VCH6UV24VQFAK6QXT4T8V0FR_INDEX_D" unique="false" columns="CHAIR_ID"/>
+    </table>
+  </data-source>
+</component>
