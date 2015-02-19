@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
 
-</body>
-</html>
+<div class="jumbotron">
+    <h1 align="center">Hello, {{login}}!</h1>
+</div>
+<div>
+    <form ng-controller="loginCtrl">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="form-group">
+                <label for="loginInput">Login</label>
+                <input id="loginInput" class="form-control" placeholder="Enter login">
+            </div>
+            <div class="form-group">
+                <label for="passwordInput">Password</label>
+                <input id="passwordInput" class="form-control" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
