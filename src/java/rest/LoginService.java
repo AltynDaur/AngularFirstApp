@@ -22,6 +22,7 @@ import java.util.Arrays;
 @RequestScoped
 @Path("/login")
 public class LoginService {
+
     @Inject
     @JPA
     private LoginPersonDAO loginPersonDAO;
@@ -39,16 +40,9 @@ public class LoginService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Person find(LoginPerson loginPerson){
         LoginPerson loginPersonFromDB = loginPersonDAO.find(loginPerson.getLogin());
-        byte[] loginPersonResultPass=EncryptByMD5.encrypt(loginPerson.getPassword(),loginPersonFromDB.getSalt());
-        byte[] originalPass = EncryptByMD5.encrypt(loginPersonFromDB.getPassword(), loginPersonFromDB.getSalt());
-        if(Arrays.equals(loginPersonResultPass,originalPass)){
-            Teacher currentTeacher = teacherDAO.find(loginPersonFromDB.getId());
-            Chair currentChair = chairDAO.find(loginPersonFromDB.getId());
-            if(currentTeacher!=null){
-                return currentTeacher;
-            } else if(currentChair!=null){
-                return currentChair;
-            }
+
+        if(loginPerson.getPassword().equals(loginPersonFromDB.getPassword())){
+            return loginPersonFromDB.getPerson();
         }
         return null;
     }

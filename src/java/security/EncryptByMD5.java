@@ -7,13 +7,15 @@ import java.security.SecureRandom;
 public class EncryptByMD5 {
     private static MessageDigest md;
 
-    public static byte[] encrypt(byte[] pass, byte[] salt){
+    public static byte[] encrypt(String pass, String salt){
 
         try {
             md = MessageDigest.getInstance("MD5");
             md.reset();
-            md.update(salt);
-            byte[] digested = md.digest(pass);
+            byte[] passBytes = pass.getBytes();
+            byte[] saltBytes = salt.getBytes();
+            md.update(saltBytes);
+            byte[] digested = md.digest(passBytes);
             byte[] result = new byte[0];
             for(int i=0;i<digested.length;i++){
                 result[i]= (byte) (0xff & digested[i]);
@@ -27,8 +29,8 @@ public class EncryptByMD5 {
 
     }
 
-    public static byte[] generateSalt(){
+    public static String generateSalt(){
         SecureRandom secureRandom = new SecureRandom();
-        return secureRandom.generateSeed(32);
+        return secureRandom.generateSeed(32).toString();
     }
 }

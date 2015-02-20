@@ -8,8 +8,8 @@ public class LoginPerson {
     @GeneratedValue
     private long id;
     private String login;
-    private byte[] password;
-    private byte[] salt;
+    private String password;
+    private String salt;
     @OneToOne
     @PrimaryKeyJoinColumn
     private Person person;
@@ -30,19 +30,27 @@ public class LoginPerson {
         this.login = login;
     }
 
-    public byte[] getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(byte[] password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public byte[] getSalt() {
+    public String getSalt() {
         return salt;
     }
 
-    public void setSalt(byte[] salt) {
+    public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

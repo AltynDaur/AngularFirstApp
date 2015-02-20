@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="AngularFirstApp:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/AngularFirstApp_war_exploded.war</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts/AngularFirstApp.war</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="AngularFirstApp/web/Web" />
       <element id="directory" name="WEB-INF">

@@ -60,7 +60,7 @@
     <table name="LOGINPERSON" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
       <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="LOGIN" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="PASSWORD" sqlType="VARBINARY" precision="255" scale="0" nullable="true" jdbcType="-3"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="SALT" sqlType="VARBINARY" precision="255" scale="0" nullable="true" jdbcType="-3"/>
       <primary-key name="CONSTRAINT_F" columns="ID"/>
     </table>

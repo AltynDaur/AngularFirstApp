@@ -7,7 +7,6 @@ scheduleApp.config(function($routeProvider){
             controller:'carouselCtrl'
         }).
         when('/login',{
-            templateUrl:'login.html',
-            controller:'loginController'
+            templateUrl:'login.html'
         });
 });
