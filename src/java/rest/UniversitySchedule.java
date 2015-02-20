@@ -2,6 +2,6 @@ package rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-@ApplicationPath("/schedule/")
+@ApplicationPath("/schedule")
 public class UniversitySchedule extends Application{
 }

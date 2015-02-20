@@ -24,4 +24,9 @@ public class JPALoginPersonDAO implements LoginPersonDAO{
         criteriaQuery.select(personRoot).where(cb.equal(personRoot.get("login"), login));
         return entityManager.createQuery(criteriaQuery).getSingleResult();
     }
+
+    @Override
+    public void add(LoginPerson loginPerson) {
+        entityManager.merge(loginPerson);
+    }
 }

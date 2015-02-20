@@ -1,15 +1,18 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class LoginPerson {
     @Id
+    @GeneratedValue
     private long id;
     private String login;
     private byte[] password;
     private byte[] salt;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Person person;
 
     public long getId() {
         return id;

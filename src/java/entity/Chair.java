@@ -1,31 +1,31 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlRootElement;
-
+import java.util.List;
 @Entity
 @XmlRootElement
-public class Chair {
-    @Id
-    @GeneratedValue
-    private long id;
-    private String name;
+public class Chair extends Person{
 
-    public long getId() {
-        return id;
+    @Pattern(regexp = "\\w+")
+    private String chairName;
+    @OneToMany
+    private List<Teacher> teachers;
+
+    public String getChairName() {
+        return chairName;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setChairName(String chairName) {
+        this.chairName = chairName;
     }
 
-    public String getName() {
-        return name;
+    public List<Teacher> getTeachers() {
+        return teachers;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
     }
 }
