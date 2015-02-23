@@ -1,15 +1,16 @@
 package entity;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class LoginPerson {
     @Id
     @GeneratedValue
     private long id;
     private String login;
     private String password;
-    private String salt;
     @OneToOne
     @PrimaryKeyJoinColumn
     private Person person;
@@ -36,14 +37,6 @@ public class LoginPerson {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
     }
 
     public Person getPerson() {

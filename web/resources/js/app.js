@@ -1,4 +1,4 @@
-var scheduleApp = angular.module('scheduleApp',['ngRoute','scheduleControllers']);
+var scheduleApp = angular.module('scheduleApp',['ngRoute','scheduleControllers','loginPersonService','ngCookies']);
 
 scheduleApp.config(function($routeProvider){
     $routeProvider.
@@ -7,6 +7,7 @@ scheduleApp.config(function($routeProvider){
             controller:'carouselCtrl'
         }).
         when('/login',{
-            templateUrl:'login.html'
+            templateUrl:'login.html',
+            controller:'loginController'
         });
 });

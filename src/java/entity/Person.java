@@ -2,9 +2,11 @@ package entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@XmlRootElement
 public abstract class Person {
     @Id
     private long id;

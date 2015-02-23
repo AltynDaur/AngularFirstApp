@@ -1,17 +1,17 @@
 
 <div class="jumbotron">
-    <h1 align="center">Hello, {{login}}!</h1>
+    <h1 align="center">Greetings, master jedi!</h1>
 </div>
 <div>
-    <form ng-controller="loginController">
+    <form id="log" ng-submit="login()">
         <div class="col-sm-4 col-sm-offset-4">
             <div class="form-group">
                 <label for="loginInput">Login</label>
-                <input id="loginInput" class="form-control" placeholder="Enter login" ng-model="login"/>
+                <input id="loginInput" class="form-control" placeholder="Enter login" ng-model="loginPerson.login"/>
             </div>
             <div class="form-group">
                 <label for="passwordInput">Password</label>
-                <input id="passwordInput" class="form-control" placeholder="Enter password" ng-model="password">
+                <input id="passwordInput" class="form-control" placeholder="Enter password" ng-model="loginPerson.password">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
