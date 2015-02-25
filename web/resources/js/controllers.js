@@ -17,8 +17,8 @@ scheduleControllers.controller('loginController',function($scope,$http,$cookieSt
             } else{
                 $scope.errorMessages = ['Unknown error'];
             }
-            $cookieStore.put('user',angular.toJson(result,true));
-            $window.location.href('/AngularFirstApp/scheduleTable.html');
+            $cookieStore.user = result.data;
+            $location.path('/scheduleTable.html');
         });
     }
 
