@@ -3,7 +3,7 @@
     <h1 align="center">Greetings, master jedi!</h1>
 </div>
 <div>
-    <form id="log" ng-submit="login()">
+    <form id="log" ng-controller="loginController">
         <div class="col-sm-4 col-sm-offset-4">
             <div class="form-group">
                 <label for="loginInput">Login</label>
@@ -13,7 +13,7 @@
                 <label for="passwordInput">Password</label>
                 <input id="passwordInput" class="form-control" placeholder="Enter password" ng-model="loginPerson.password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" ng-click="login()" class="btn btn-primary">Submit</button>
             <ul ng-hide="!successMessages" class="success">
                 <li ng-repeat="message in successMessages">{{message}}</li>
             </ul>
