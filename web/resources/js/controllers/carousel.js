@@ -1,4 +1,4 @@
-angular.module('carouselController',['ui.bootstrap'])
+angular.module('start',['ui.bootstrap','ui.router'])
     .controller('carouselCtrl',function($scope){
     $scope.myInterval = 5000;
     var slides = $scope.slides = [{

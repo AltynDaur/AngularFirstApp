@@ -1,11 +1,4 @@
-var loginController = angular.module('login',['ui.router','angular-storage'])
-    .config(function ($stateProvider){
-        $stateProvider.state('login',{
-            url:'/login',
-            templateUrl:'/login.html',
-            controller:'loginController'
-        })
-    });
+var loginController = angular.module('login',['ui.router','angular-storage']);
 
 loginController.controller('loginController',function($scope,$http,store,$state){
     $scope.loginPerson = {};

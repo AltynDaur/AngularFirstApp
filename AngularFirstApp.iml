@@ -40,5 +40,6 @@
     <orderEntry type="library" name="javax:javaee-api:7.0" level="project" />
     <orderEntry type="library" name="angular" level="application" />
     <orderEntry type="library" name="ui-bootstrap-tpls-0.12.0" level="application" />
+    <orderEntry type="library" name="com.auth0:java-jwt:2.0.1" level="project" />
   </component>
 </module>
