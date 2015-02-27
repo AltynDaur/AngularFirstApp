@@ -4,7 +4,7 @@ loginController.controller('loginController',function($scope,$http,store,$state)
     $scope.loginPerson = {};
     $scope.login = function(){
         $http({
-            url:"http://localhost:8080/schedule/login",
+            url:"http://localhost:8080/AngularFirstApp/schedule/login",
             method:'POST',
             data:$scope.loginPerson
         }).then(function(response){

@@ -9,6 +9,7 @@ public class LoginPerson {
     @Id
     @GeneratedValue
     private long id;
+    @Column(unique = true)
     private String login;
     private String password;
     @OneToOne

@@ -1,5 +1,6 @@
 package rest;
 
+import com.auth0.jwt.JWTSigner;
 import dao.ChairDAO;
 import dao.JPA;
 import dao.LoginPersonDAO;
@@ -17,7 +18,13 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 @RequestScoped
 @Path("/login")
@@ -36,14 +43,29 @@ public class LoginService {
     private TeacherDAO teacherDAO;
 
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Person find(LoginPerson loginPerson){
+    public String find(LoginPerson loginPerson){
         LoginPerson loginPersonFromDB = loginPersonDAO.find(loginPerson.getLogin());
-
+        String token = null;
         if(loginPerson.getPassword().equals(loginPersonFromDB.getPassword())){
-            return loginPersonFromDB.getPerson();
+            JWTSigner jwtSigner = new JWTSigner("Angular rocks!");
+            try {
+                token = jwtSigner.sign(introspect(loginPersonFromDB.getPerson()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        return null;
+        return token;
+    }
+    public static Map<String, Object> introspect(Object obj) throws Exception {
+        Map<String, Object> result = new HashMap<String, Object>();
+        BeanInfo info = Introspector.getBeanInfo(obj.getClass());
+        for (PropertyDescriptor pd : info.getPropertyDescriptors()) {
+            Method reader = pd.getReadMethod();
+            if (reader != null)
+                result.put(pd.getName(), reader.invoke(obj));
+        }
+        return result;
     }
 }
