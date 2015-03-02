@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.time.temporal.WeekFields;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,7 @@ public class ClassDay {
     private LocalDate localDate;
     @OneToMany
     private List<Class> classes;
+
 
     public long getId() {
         return id;

@@ -1,5 +1,5 @@
 var scheduleApp = angular.module('scheduleApp', ['login', 'scheduleTable', 'start', 'angular-jwt', 'ui.router']);
-var appName = '/AngularFirstApp'
+var appName = '/AngularFirstApp';
 scheduleApp.config(function ($urlRouterProvider, jwtInterceptorProvider, $httpProvider, $stateProvider) {
     $stateProvider.state('publicSchedule', {
         url: '/publicSchedule',
@@ -30,7 +30,7 @@ scheduleApp.config(function ($urlRouterProvider, jwtInterceptorProvider, $httpPr
     $httpProvider.interceptors.push('jwtInterceptor');
 })
     .run(function($state,store,$rootScope){
-    $rootScope.$on('stateChangeStart',function(e,to){
+    $rootScope.$on('$stateChangeStart',function(e,to){
         if(to.data && to.data.requiresLogin){
             if(!store.get('jwt')){
                 e.preventDefault();

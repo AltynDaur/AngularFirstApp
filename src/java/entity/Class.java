@@ -20,6 +20,8 @@ public class Class {
     @ManyToOne
     private Subject subject;
 
+    private boolean isEveryWeek;
+
     public long getId() {
         return id;
     }
@@ -66,5 +68,13 @@ public class Class {
 
     public void setSubject(Subject subject) {
         this.subject = subject;
+    }
+
+    public boolean isEveryWeek() {
+        return isEveryWeek;
+    }
+
+    public void setEveryWeek(boolean isEveryWeek) {
+        this.isEveryWeek = isEveryWeek;
     }
 }

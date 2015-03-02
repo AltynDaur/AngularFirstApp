@@ -43,7 +43,7 @@ public class LoginService {
     private TeacherDAO teacherDAO;
 
     @POST
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String find(LoginPerson loginPerson){
         LoginPerson loginPersonFromDB = loginPersonDAO.find(loginPerson.getLogin());
@@ -56,7 +56,7 @@ public class LoginService {
                 e.printStackTrace();
             }
         }
-        return token;
+        return "{\"token\": \""+token+"\"}";
     }
     public static Map<String, Object> introspect(Object obj) throws Exception {
         Map<String, Object> result = new HashMap<String, Object>();

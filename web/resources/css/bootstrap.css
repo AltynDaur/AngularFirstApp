@@ -12,7 +12,7 @@ html {
 }
 body {
   margin: 0;
-    background-color: #afd9ee;
+    background-color: #afd9ee; !important;
 }
 article,
 aside,

@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
 import java.util.Map;
 
-@WebFilter("/schedule/*")
+@WebFilter("/schedule/resources/*")
 public class AuthenticationFilter implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

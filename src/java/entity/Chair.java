@@ -10,7 +10,7 @@ public class Chair extends Person{
 
     @Pattern(regexp = "\\w+")
     private String chairName;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Teacher> teachers;
 
     public String getChairName() {

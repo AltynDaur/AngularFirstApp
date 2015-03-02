@@ -8,8 +8,8 @@ loginController.controller('loginController',function($scope,$http,store,$state)
             method:'POST',
             data:$scope.loginPerson
         }).then(function(response){
-            store.set('jwt',response.data.id_token);
-            $state.go('scheduleTable');
+            store.set('jwt',response.data.token);
+            $state.go('adminScheduleTable');
         }), function (error) {
             alert(error.data);
         }

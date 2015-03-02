@@ -7,6 +7,7 @@ import entity.Class;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @JPA
 public class JPAClassDAO implements ClassDAO{
@@ -31,5 +32,10 @@ public class JPAClassDAO implements ClassDAO{
     @Override
     public void delete(long id) {
         entityManager.remove(entityManager.find(Class.class,id));
+    }
+
+    @Override
+    public List<Class> findByGroup(String groupName) {
+        return null;
     }
 }
