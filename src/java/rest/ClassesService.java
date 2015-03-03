@@ -1,6 +1,7 @@
 package rest;
 
 import dao.ClassDAO;
+import dao.JPA;
 import entity.*;
 import entity.Class;
 
@@ -18,6 +19,7 @@ import java.util.Map;
 @RequestScoped
 public class ClassesService {
     @Inject
+    @JPA
     private ClassDAO classDAO;
 
     @GET
