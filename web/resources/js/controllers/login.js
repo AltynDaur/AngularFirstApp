@@ -1,6 +1,6 @@
-var loginController = angular.module('login',['ui.router','angular-storage']);
+var loginController = angular.module('login',['ui.router','angular-storage','Restangular']);
 
-loginController.controller('loginController',function($scope,$http,store,$state){
+loginController.controller('loginController',function($scope,$http,store,$state,Restangular){
     $scope.loginPerson = {};
     $scope.login = function(){
         $http({
