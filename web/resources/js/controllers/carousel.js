@@ -4,7 +4,7 @@ angular.module('start',['ui.bootstrap','ui.router'])
     var slides = $scope.slides = [{
         image: '/AngularFirstApp/resources/images/student.jpg',
         text: 'Student',
-        href: 'scheduleTable.html'
+        href: '/AngularFirstApp/#/publicSchedule'
     },
         {
             image: '/AngularFirstApp/resources/images/teacher.jpg',

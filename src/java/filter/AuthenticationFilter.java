@@ -25,7 +25,7 @@ public class AuthenticationFilter implements Filter{
 
         try {
             jwtVerifier.verify(token);
-        } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException | JWTVerifyException e) {
+        } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException | JWTVerifyException  e) {
             e.printStackTrace();
         }
 
