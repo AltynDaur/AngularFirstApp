@@ -5,8 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
-import java.time.temporal.WeekFields;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 public class ClassDay {
@@ -15,7 +15,7 @@ public class ClassDay {
     private long id;
     private LocalDate localDate;
     @OneToMany
-    private List<Class> classes;
+    private Map<Integer,Lesson> lessons;
 
 
     public long getId() {
@@ -34,11 +34,11 @@ public class ClassDay {
         this.localDate = localDate;
     }
 
-    public List<Class> getClasses() {
-        return classes;
+    public Map<Integer, Lesson> getLessons() {
+        return lessons;
     }
 
-    public void setClasses(List<Class> classes) {
-        this.classes = classes;
+    public void setLessons(Map<Integer, Lesson> lessons) {
+        this.lessons = lessons;
     }
 }

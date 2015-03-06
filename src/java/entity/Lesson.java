@@ -6,7 +6,7 @@ import java.time.LocalTime;
 
 @Entity
 @XmlRootElement
-public class Class {
+public class Lesson {
     @Id
     @GeneratedValue
     private long id;

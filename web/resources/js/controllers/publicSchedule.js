@@ -12,6 +12,7 @@ angular.module('publicSchedule',['ui.bootstrap','ui.calendar'])
         };
         $scope.uiConfig = {
             calendar:{
+                type:'agendaWeek',
                 height: 450,
                 editable: true,
                 header:{
@@ -19,7 +20,7 @@ angular.module('publicSchedule',['ui.bootstrap','ui.calendar'])
                     center: '',
                     right: 'today prev,next'
                 },
-                viewType:'agendaWeek',
+
                 eventClick: $scope.alertOnEventClick,
                 eventDrop: $scope.alertOnDrop,
                 eventResize: $scope.alertOnResize,
