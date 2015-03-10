@@ -1,9 +1,8 @@
 
 <h2 align="center">Zdraste</h2>
 
-<div ui-calendar="uiConfig.calendar" class="col-sm-8 calendar" align="center"></div>
-
-<table ng-repeat-start="classday in classdays">
-    <tr><th>{{classday.localeDate}}</th></tr>
-    <tr ng-repeat="lesson in classday.lessons">{{lesson.subject.name+":"+lesson.teacher.name}}}</tr>
+<input type="text" ng-model="currentGroup"/>
+<table ng-repeat="classday in classdays">
+    <tr><th>{{classday.localeDate | date}}</th></tr>
+    <tr  ng-repeat="lesson in classday.lessons">{{lesson.subject.name+":"+lesson.teacher.name}}</tr>
 </table>

@@ -1,6 +1,8 @@
-angular.module('publicSchedule',['ui.bootstrap','ui.calendar'])
-    .controller('publicScheduleController',function($scope,$compile,uiCalendarConfig){
-        var date = new Date();
+angular.module('publicSchedule',['ui.bootstrap'])
+    .controller('publicScheduleController',function($scope,$compile){
+        var classdays = Restangular.all('classdays');
+
+        /*var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
         var y = date.getYear();
@@ -12,7 +14,7 @@ angular.module('publicSchedule',['ui.bootstrap','ui.calendar'])
         };
         $scope.uiConfig = {
             calendar:{
-                type:'agendaWeek',
+                type:'Week',
                 height: 450,
                 editable: true,
                 header:{
@@ -26,5 +28,5 @@ angular.module('publicSchedule',['ui.bootstrap','ui.calendar'])
                 eventResize: $scope.alertOnResize,
                 eventRender: $scope.eventRender
             }
-        };
+        };*/
     });
