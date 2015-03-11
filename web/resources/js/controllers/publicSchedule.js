@@ -1,6 +1,18 @@
 angular.module('publicSchedule',['ui.bootstrap'])
-    .controller('publicScheduleController',function($scope,$compile){
-        var classdays = Restangular.all('classdays');
+    .controller('publicScheduleController',function($scope,$compile,$http){
+
+
+        $scope.addSomeStaff = function(){
+            var hello = 'hello';
+            $http.post('schedule/resources/classdays',hello,{
+                headers:{'Content-type':'text/plain'}
+            }).success(function(data){
+                if(data.status === 200){
+                    console.log(data);
+                }
+
+            });
+        };
 
         /*var date = new Date();
         var d = date.getDate();

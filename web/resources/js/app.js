@@ -1,6 +1,6 @@
-var scheduleApp = angular.module('scheduleApp', ['login', 'publicSchedule', 'start', 'angular-jwt', 'ui.router','restangular']);
+var scheduleApp = angular.module('scheduleApp', ['login', 'publicSchedule', 'start', 'angular-jwt', 'ui.router']);
 var appName = '/AngularFirstApp';
-scheduleApp.config(function ($urlRouterProvider, jwtInterceptorProvider, $httpProvider, $stateProvider, RestangularProvider) {
+scheduleApp.config(function ($urlRouterProvider, jwtInterceptorProvider, $httpProvider, $stateProvider) {
     $stateProvider.state('schedule', {
         url: '/publicSchedule',
         controller: 'publicScheduleController',
@@ -21,7 +21,7 @@ scheduleApp.config(function ($urlRouterProvider, jwtInterceptorProvider, $httpPr
         }
     });
 
-    RestangularProvider.setBaseUrl('/schedule/resources');
+
 
     $urlRouterProvider.otherwise('/');
 
