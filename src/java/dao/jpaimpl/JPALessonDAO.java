@@ -6,6 +6,7 @@ import entity.Lesson;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @JPA
@@ -19,6 +20,7 @@ public class JPALessonDAO implements LessonDAO {
     }
 
     @Override
+    @Transactional
     public void add(Lesson someLesson) {
         entityManager.merge(someLesson);
     }

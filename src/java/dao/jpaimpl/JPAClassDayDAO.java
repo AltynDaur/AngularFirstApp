@@ -6,6 +6,7 @@ import entity.*;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 @JPA
 public class JPAClassDayDAO implements ClassDayDAO{
@@ -17,6 +18,7 @@ public class JPAClassDayDAO implements ClassDayDAO{
     }
 
     @Override
+    @Transactional
     public void add(ClassDay classDay) {
         entityManager.merge(classDay);
     }

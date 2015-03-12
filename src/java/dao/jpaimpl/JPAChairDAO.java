@@ -6,6 +6,7 @@ import entity.Chair;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 @JPA
 public class JPAChairDAO implements ChairDAO{
@@ -22,6 +23,7 @@ public class JPAChairDAO implements ChairDAO{
     }
 
     @Override
+    @Transactional
     public void update(Chair chair) {
         entityManager.merge(chair);
     }
