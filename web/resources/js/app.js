@@ -1,10 +1,10 @@
-var scheduleApp = angular.module('scheduleApp', ['login', 'publicSchedule', 'start', 'angular-jwt', 'ui.router']);
+var scheduleApp = angular.module('scheduleApp', ['login', 'register', 'start', 'angular-jwt', 'ui.router']);
 var appName = '/AngularFirstApp';
 scheduleApp.config(function ($urlRouterProvider, jwtInterceptorProvider, $httpProvider, $stateProvider) {
     $stateProvider.state('schedule', {
-        url: '/publicSchedule',
-        controller: 'publicScheduleController',
-        templateUrl: appName+'/scheduleTable.html'
+        url: '/register',
+        controller: 'registerController',
+        templateUrl: appName+'/register.html'
     }).state('start', {
         url: '/',
         templateUrl: appName+'/start.html',

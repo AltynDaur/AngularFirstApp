@@ -3,18 +3,18 @@ angular.module('start',['ui.bootstrap','ui.router'])
     $scope.myInterval = 5000;
     var slides = $scope.slides = [{
         image: '/AngularFirstApp/resources/images/student.jpg',
-        text: 'Student',
-        href: '/AngularFirstApp/#/publicSchedule'
-    },
+        text: 'Child',
+        href: '/AngularFirstApp/#/login'
+        },
         {
             image: '/AngularFirstApp/resources/images/teacher.jpg',
-            text: 'Teacher',
+            text: 'Santa',
             href:'/AngularFirstApp/#/login'
         },
         {
             image: '/AngularFirstApp/resources/images/chair.jpg',
-            text: 'Chair',
-            href: '/AngularFirstApp/#/login'
+            text: 'Register',
+            href: '/AngularFirstApp/#/register'
         }
     ];
 

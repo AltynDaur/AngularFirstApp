@@ -31,30 +31,6 @@ public class LoginService {
     @JPA
     private LoginPersonDAO loginPersonDAO;
 
-    @Inject
-    @JPA
-    private ChairDAO chairDAO;
-
-    @Inject
-    @JPA
-    private TeacherDAO teacherDAO;
-
-    @Inject
-    @JPA
-    private LessonDAO lessonDAO;
-
-    @Inject
-    @JPA
-    private ClassDayDAO classDayDAO;
-
-    @Inject
-    @JPA
-    private GroupDAO studGroupDAO;
-
-    @Inject
-    @JPA
-    private SubjectDAO subjectDAO;
-
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
