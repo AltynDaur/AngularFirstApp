@@ -1,3 +1,3 @@
-angular.module('loginPersonService',['ngResource']).factory('LoginPersons',function($resource){
-    return $resource('schedule/login:loginPersonId',{});
+angular.module('registerPersonService',['ngResource']).factory('RegisterPersons',function($resource){
+    return $resource('schedule/register:registerPersonId',{});
 })

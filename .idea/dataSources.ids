@@ -6,21 +6,6 @@
     </database-info>
     <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
     <schema name="PUBLIC" catalog="SCHEDULEDB"/>
-    <table name="CHILD" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
-      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <primary-key name="CONSTRAINT_3" columns="ID"/>
-      <foreign-key name="FK_FP8OX0R280G3P3S0FTPSYC9RW" columns="ID" ref-table="PERSON" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
-      <exported-key name="FK_38UCPA3ON9HIIKOPCECVCXTLP" table="CHILD_WISH" schema="PUBLIC" catalog="SCHEDULEDB" columns="CHILD_ID"/>
-      <exported-key name="FK_2CTIWPCYFFM9KGCMH68L25YKI" table="SANTA_CHILD" schema="PUBLIC" catalog="SCHEDULEDB" columns="CHILDREN_ID"/>
-    </table>
-    <table name="CHILD_WISH" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
-      <column name="CHILD_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="WISHES_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <foreign-key name="FK_38UCPA3ON9HIIKOPCECVCXTLP" columns="CHILD_ID" ref-table="CHILD" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
-      <foreign-key name="FK_OE4QBIG6VOR1LXG588GPBGT03" columns="WISHES_ID" ref-table="WISH" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
-      <index name="UK_OE4QBIG6VOR1LXG588GPBGT03_INDEX_6" unique="true" columns="WISHES_ID"/>
-      <index name="FK_38UCPA3ON9HIIKOPCECVCXTLP_INDEX_6" unique="false" columns="CHILD_ID"/>
-    </table>
     <table name="LOGINPERSON" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
       <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="LOGIN" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -33,29 +18,32 @@
       <column name="FIRSTNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="LASTNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="CONSTRAINT_8" columns="ID"/>
-      <exported-key name="FK_FP8OX0R280G3P3S0FTPSYC9RW" table="CHILD" schema="PUBLIC" catalog="SCHEDULEDB" columns="ID"/>
-      <exported-key name="FK_KH0UMIDFT57DS9YCEE2DRWCRW" table="SANTA" schema="PUBLIC" catalog="SCHEDULEDB" columns="ID"/>
+      <exported-key name="FK_INQ4XM3I524CMIA3RP65FX39W" table="PERSON_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" columns="PERSON_ID"/>
+      <exported-key name="FK_SIDM2BYMGUJMWYE0QVLLT4PO8" table="PERSON_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" columns="NEEDFORGIFT_ID"/>
+      <exported-key name="FK_IQNBWS8UN9GTV7ROU9R3OQ8IG" table="PERSON_WISH" schema="PUBLIC" catalog="SCHEDULEDB" columns="PERSON_ID"/>
     </table>
-    <table name="SANTA" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
-      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <primary-key name="CONSTRAINT_4" columns="ID"/>
-      <foreign-key name="FK_KH0UMIDFT57DS9YCEE2DRWCRW" columns="ID" ref-table="PERSON" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
-      <exported-key name="FK_OBWCVFSLH9446A5HF429HENG1" table="SANTA_CHILD" schema="PUBLIC" catalog="SCHEDULEDB" columns="SANTA_ID"/>
+    <table name="PERSON_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
+      <column name="PERSON_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="NEEDFORGIFT_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <foreign-key name="FK_INQ4XM3I524CMIA3RP65FX39W" columns="PERSON_ID" ref-table="PERSON" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FK_SIDM2BYMGUJMWYE0QVLLT4PO8" columns="NEEDFORGIFT_ID" ref-table="PERSON" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="UK_SIDM2BYMGUJMWYE0QVLLT4PO8_INDEX_1" unique="true" columns="NEEDFORGIFT_ID"/>
+      <index name="FK_INQ4XM3I524CMIA3RP65FX39W_INDEX_1" unique="false" columns="PERSON_ID"/>
     </table>
-    <table name="SANTA_CHILD" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
-      <column name="SANTA_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="CHILDREN_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <foreign-key name="FK_2CTIWPCYFFM9KGCMH68L25YKI" columns="CHILDREN_ID" ref-table="CHILD" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
-      <foreign-key name="FK_OBWCVFSLH9446A5HF429HENG1" columns="SANTA_ID" ref-table="SANTA" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
-      <index name="UK_2CTIWPCYFFM9KGCMH68L25YKI_INDEX_A" unique="true" columns="CHILDREN_ID"/>
-      <index name="FK_OBWCVFSLH9446A5HF429HENG1_INDEX_A" unique="false" columns="SANTA_ID"/>
+    <table name="PERSON_WISH" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
+      <column name="PERSON_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="MYWISHES_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <foreign-key name="FK_IQNBWS8UN9GTV7ROU9R3OQ8IG" columns="PERSON_ID" ref-table="PERSON" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FK_MW5X0BU23890V7F54XF8A4FNB" columns="MYWISHES_ID" ref-table="WISH" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="UK_MW5X0BU23890V7F54XF8A4FNB_INDEX_6" unique="true" columns="MYWISHES_ID"/>
+      <index name="FK_IQNBWS8UN9GTV7ROU9R3OQ8IG_INDEX_6" unique="false" columns="PERSON_ID"/>
     </table>
     <table name="WISH" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
       <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="COUNT" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="WHAT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="CONSTRAINT_2" columns="ID"/>
-      <exported-key name="FK_OE4QBIG6VOR1LXG588GPBGT03" table="CHILD_WISH" schema="PUBLIC" catalog="SCHEDULEDB" columns="WISHES_ID"/>
+      <exported-key name="FK_MW5X0BU23890V7F54XF8A4FNB" table="PERSON_WISH" schema="PUBLIC" catalog="SCHEDULEDB" columns="MYWISHES_ID"/>
     </table>
   </data-source>
 </component>

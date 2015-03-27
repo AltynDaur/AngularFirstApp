@@ -3,7 +3,7 @@ var appName = '/AngularFirstApp';
 scheduleApp.config(function ($urlRouterProvider, jwtInterceptorProvider, $httpProvider, $stateProvider) {
     $stateProvider.state('schedule', {
         url: '/register',
-        controller: 'registerController',
+        controller: 'RegisterController',
         templateUrl: appName+'/register.html'
     }).state('start', {
         url: '/',
@@ -13,9 +13,9 @@ scheduleApp.config(function ($urlRouterProvider, jwtInterceptorProvider, $httpPr
         url: '/login',
         templateUrl: appName+'/login.html',
         controller: 'loginController'
-    }).state('adminScheduleTable',{
-        url:'/admin/scheduleTable',
-        templateUrl:appName+'/private/adminScheduleTable.html',
+    }).state('wishesList',{
+        url:'/admin/wishesList',
+        templateUrl:appName+'/private/wishesList.html',
         data:{
             requiresLogin:true
         }

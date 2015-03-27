@@ -9,7 +9,7 @@ loginController.controller('loginController',function($scope,$http,store,$state)
             data:$scope.loginPerson
         }).then(function(response){
             store.set('jwt',response.data.token);
-            $state.go('adminScheduleTable');
+            $state.go('wishesList');
         }), function (error) {
             alert(error.data);
         }
