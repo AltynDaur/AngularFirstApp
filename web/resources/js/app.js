@@ -1,4 +1,4 @@
-var scheduleApp = angular.module('scheduleApp', ['login', 'register', 'start', 'angular-jwt', 'ui.router']);
+var scheduleApp = angular.module('scheduleApp', ['login', 'register', 'start', 'angular-jwt', 'wishesList','ui.router']);
 var appName = '/AngularFirstApp';
 scheduleApp.config(function ($urlRouterProvider, jwtInterceptorProvider, $httpProvider, $stateProvider) {
     $stateProvider.state('schedule', {
