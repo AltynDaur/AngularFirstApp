@@ -1,14 +1,17 @@
-angular.module('wishes',[]).controller('WishesController',function($scope){
-    $scope.wishes=[];
+angular.module('wishes',['wishService']).controller('WishesController',function($scope,Wishes){
+    $scope.wishes=Wishes.query;
     $scope.errorMessages = '';
 
     $scope.addWish = function () {
-        if(typeof $scope.wish.count === 'number'){
-            $scope.wishes.push({
-                id:$scope.wishes.length,
-                want:$scope.wish.want,
-                count:$scope.wish.count
-            });
+        $scope.errorMessages = ''
+        var count = parseInt($scope.wish.count)
+        if(typeof count === 'number' && count > 0){
+
+            Wishes.save($scope.wishes,function(response){
+                console.log('All OK')
+            }),function(error){
+                $scope.errorMessages = [ 'Unknown  server error' ];
+            };
             $scope.wish = {}
         } else {
             $scope.errorMessages = ['Count should be a number!']

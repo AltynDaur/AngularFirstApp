@@ -15,6 +15,11 @@ public class JPAPersonDAO implements PersonDAO {
     private EntityManager entityManager;
 
     @Override
+    public Person getById(long id) {
+        return entityManager.find(Person.class,id);
+    }
+
+    @Override
     public void add(Person person) {
         entityManager.merge(person);
     }
