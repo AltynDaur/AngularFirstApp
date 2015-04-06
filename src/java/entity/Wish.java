@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -8,15 +9,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Wish {
     @Id
-    private long id;
+    @GeneratedValue
+    private int id;
     private String what;
     private int count;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -34,5 +36,22 @@ public class Wish {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Wish wish = (Wish) o;
+
+        if (id != wish.id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 }

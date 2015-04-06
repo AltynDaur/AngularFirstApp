@@ -7,5 +7,5 @@ import entity.LoginPerson;
  */
 public interface LoginPersonDAO {
     public LoginPerson find(String login);
-    public void add(LoginPerson loginPerson);
+    public LoginPerson add(LoginPerson loginPerson);
 }

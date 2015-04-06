@@ -17,7 +17,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @RequestScoped
 @Path("/register")
@@ -39,13 +41,13 @@ public class RegisterService {
             LoginPerson loginPerson = new LoginPerson();
             loginPerson.setLogin(registerPersonDTO.getLogin());
             loginPerson.setPassword(registerPersonDTO.getPassword());
-            loginPersonDAO.add(loginPerson);
-            loginPerson = loginPersonDAO.find(registerPersonDTO.getLogin());
+            loginPerson = loginPersonDAO.add(loginPerson);
             Person person = new Person();
             person.setId(loginPerson.getId());
             person.setFirstName(registerPersonDTO.getFirstName());
             person.setLastName(registerPersonDTO.getLastName());
-            personDAO.add(person);
+            person = personDAO.add(person);
+            findSecretSanta(person);
             builder = Response.ok();
         } else {
             Map<String, String> responseObj = new HashMap<>();
@@ -53,5 +55,26 @@ public class RegisterService {
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
         }
         return builder.build();
+    }
+
+    private void findSecretSanta(Person person) {
+        List<Person> santas = personDAO.getAll();
+        boolean addFlag = false;
+        for (int i = 0; i < santas.size(); i++) {
+            if(santas.get(i).getNeedForGift().isEmpty() && !santas.get(i).equals(person)) {
+                santas.get(i).getNeedForGift().add(person);
+                personDAO.update(santas.get(i));
+                addFlag = true;
+            }
+            if(addFlag){
+                break;
+            }
+        }
+        if(!addFlag){
+            Random random = new Random();
+            Person randomPerson = santas.get(random.nextInt(santas.size()));
+            randomPerson.getNeedForGift().add(person);
+            personDAO.update(randomPerson);
+        }
     }
 }

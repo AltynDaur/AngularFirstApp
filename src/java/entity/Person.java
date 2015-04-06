@@ -9,7 +9,7 @@ import java.util.List;
 @XmlRootElement
 public class Person {
     @Id
-    private long id;
+    private int id;
     @Pattern(regexp = "\\w+")
     private String firstName;
     @Pattern(regexp = "\\w+")
@@ -20,11 +20,11 @@ public class Person {
     private List<Wish> myWishes;
 
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

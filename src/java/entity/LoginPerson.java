@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class LoginPerson {
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
     @Column(unique = true)
     private String login;
     private String password;
@@ -16,11 +16,11 @@ public class LoginPerson {
     @PrimaryKeyJoinColumn
     private Person person;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -13,7 +13,7 @@ import java.security.SignatureException;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-@WebFilter("/schedule/resources/*")
+@WebFilter("/secretSanta/resources/*")
 public class AuthenticationFilter implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

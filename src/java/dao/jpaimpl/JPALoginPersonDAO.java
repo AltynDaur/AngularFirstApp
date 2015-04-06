@@ -28,7 +28,7 @@ public class JPALoginPersonDAO implements LoginPersonDAO{
     }
 
     @Override
-    public void add(LoginPerson loginPerson) {
-        entityManager.merge(loginPerson);
+    public LoginPerson add(LoginPerson loginPerson) {
+        return entityManager.merge(loginPerson);
     }
 }

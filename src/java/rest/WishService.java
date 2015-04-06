@@ -5,12 +5,12 @@ import com.auth0.jwt.JWTVerifyException;
 import dao.JPA;
 import dao.PersonDAO;
 import dao.WishDAO;
+import dto.WishDTO;
 import entity.Person;
 import entity.Wish;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -30,34 +30,63 @@ public class WishService {
     @JPA
     private PersonDAO personDAO;
 
+    @Inject
+    @JPA
+    private WishDAO wishDAO;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Wish> listOfAllWishesThisPerson(@HeaderParam("authorization") final String token){
-        Map<String,Object> personFromToken = getToken(token);
-        Person thisPerson = personDAO.getById((Long) personFromToken.get("id"));
+    public List<Wish> listOfAllWishesOfThisPerson(@HeaderParam("authorization") final String token){
+        Map<String,Object> personFromToken = getPersonFromToken(token);
+        Person thisPerson = personDAO.getById((int) personFromToken.get("id"));
         return thisPerson.getMyWishes();
     }
 
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response addWish(@HeaderParam("authorization")final String token, Wish wish){
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Wish addWish(WishDTO wishDTO, @HeaderParam("authorization")final String token){
+
+
+        try {
+            Map<String,Object> personFromToken = getPersonFromToken(token);
+            Person thisPerson = personDAO.getById((Integer) personFromToken.get("id"));
+            Wish wish = new Wish();
+            wish.setWhat(wishDTO.getWhat());
+            wish.setCount(wishDTO.getCount());
+            wish = wishDAO.add(wish);
+            thisPerson.getMyWishes().add(wish);
+            personDAO.update(thisPerson);
+            return wish;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @DELETE
+    @Path("/{id:[0-9]+}")
+    public Response deleteWishById(@PathParam("id") int id, @HeaderParam("authorization") final String token){
         Response.ResponseBuilder builder = null;
 
         try {
-            Map<String,Object> personFromToken = getToken(token);
-            Person thisPerson = personDAO.getById((Long) personFromToken.get("id"));
-            thisPerson.getMyWishes().add(wish);
+            Map<String,Object> personFromToken = getPersonFromToken(token);
+            Person thisPerson = personDAO.getById((Integer) personFromToken.get("id"));
+            Wish currentWish = wishDAO.getById(id);
+            thisPerson.getMyWishes().remove(currentWish);
             personDAO.update(thisPerson);
             builder = Response.ok();
         } catch (Exception e) {
-            Map<String, String> responseObj = new HashMap<>();
-            responseObj.put("error", e.getMessage());
-            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+            Map<String,Object> errors = new HashMap<>();
+            errors.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(errors);
         }
         return builder.build();
     }
 
-    private Map<String, Object> getToken(String authorizationHeader) {
+
+
+    private Map<String, Object> getPersonFromToken(String authorizationHeader) {
         String result = null;
         String[] parts = authorizationHeader.split(" ");
 
