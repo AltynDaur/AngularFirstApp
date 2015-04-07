@@ -40,21 +40,20 @@ public class LoginService {
         if(loginPerson.getPassword().equals(loginPersonFromDB.getPassword())){
             JWTSigner jwtSigner = new JWTSigner("Angular rocks!");
             try {
-                token = jwtSigner.sign(introspect(loginPersonFromDB.getPerson()));
+                token = jwtSigner.sign(preparePersonForEncode(loginPersonFromDB.getPerson()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         return "{\"token\": \""+token+"\"}";
     }
-    public static Map<String, Object> introspect(Object obj) throws Exception {
+    public static Map<String, Object> preparePersonForEncode(Person person) throws Exception {
         Map<String, Object> result = new HashMap<String, Object>();
-        BeanInfo info = Introspector.getBeanInfo(obj.getClass());
-        for (PropertyDescriptor pd : info.getPropertyDescriptors()) {
-            Method reader = pd.getReadMethod();
-            if (reader != null)
-                result.put(pd.getName(), reader.invoke(obj));
-        }
+        result.put("firstName",person.getFirstName());
+        result.put("lastName",person.getLastName());
+        result.put("id",person.getId());
+        result.put("wishesCount",person.getMyWishes().size());
+        result.put("needForGiftSize",person.getNeedForGift().size());
         return result;
     }
 }

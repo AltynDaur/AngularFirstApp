@@ -35,7 +35,24 @@
                     </table>
                 </div>
             </tab>
-            <tab heading="I'm Santa">Who wan't some gifts!</tab>
+            <tab heading="I'm Santa">
+                <div class="jumbotron">
+                    <h1 align="center">Who wan't some gifts!</h1>
+                </div>
+                <div ng-repeat="person in needForGift">
+                    Who need gifts? <h2>{{person.firstName}} {{person.lastName}}</h2>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>What you want</th>
+                            <th>How many you want</th>
+                        </tr>
+                        <tr ng-repeat="wish in person.myWishes">
+                            <td>{{wish.what}}</td>
+                            <td>{{wish.count | number}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </tab>
         </tabset>
 
     </div>

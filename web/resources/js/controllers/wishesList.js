@@ -1,1 +1,1 @@
-angular.module('wishesList',['wishes']);
+angular.module('wishesList',['wishes','santaStuff']);

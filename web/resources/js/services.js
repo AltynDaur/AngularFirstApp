@@ -7,3 +7,6 @@ angular.module('wishService',['ngResource']).factory('Wishes',function($resource
         query: { method: 'GET', isArray: true }
     });
 });
+angular.module('personService',['ngResource']).factory('Persons',function($resource){
+    return $resource('secretSanta/person/:id',{});
+});
