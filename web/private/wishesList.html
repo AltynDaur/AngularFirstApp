@@ -21,11 +21,17 @@
                         <tr>
                             <th>What you want</th>
                             <th>How many you want</th>
+                            <th>Your santa says</th>
                             <th>Delete this wish</th>
                         </tr>
                         <tr ng-repeat="wish in wishes">
                             <td>{{wish.what}}</td>
                             <td>{{wish.count | number}}</td>
+                            <td>
+                                <span class="glyphicon glyphicon-thumbs-up" ng-show="{{wish.santasAnswer}}"></span>
+                                <span class="glyphicon glyphicon-thumbs-down" ng-show="{{!wish.santasAnswer}}"></span>
+                                <span class="glyphicon glyphicon-eye-close" ng-if="wish.santasAnswer === 0"></span>
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-warning" ng-click="deleteWish(wish.id, $index)">
                                     <span class="glyphicon glyphicon-remove-circle"></span>
@@ -35,20 +41,32 @@
                     </table>
                 </div>
             </tab>
-            <tab heading="I'm Santa">
+            <tab heading="I'm Santa" ng-controller="SantaController">
                 <div class="jumbotron">
                     <h1 align="center">Who wan't some gifts!</h1>
                 </div>
+                <h3 ng-hide="needForGift">You haven't good children!</h3>
                 <div ng-repeat="person in needForGift">
                     Who need gifts? <h2>{{person.firstName}} {{person.lastName}}</h2>
                     <table class="table table-bordered">
                         <tr>
                             <th>What you want</th>
                             <th>How many you want</th>
+                            <th>What did you say?</th>
                         </tr>
                         <tr ng-repeat="wish in person.myWishes">
                             <td>{{wish.what}}</td>
                             <td>{{wish.count | number}}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success" ng-click="updateAnswer(true,wish)">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" ng-click="updateAnswer(false, wish)">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </div>
+                            </td>
                         </tr>
                     </table>
                 </div>

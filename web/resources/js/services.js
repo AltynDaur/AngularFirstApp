@@ -4,7 +4,8 @@ angular.module('registerPersonService',['ngResource']).factory('RegisterPersons'
 angular.module('wishService',['ngResource']).factory('Wishes',function($resource){
     return $resource('secretSanta/wish/:id',{}, {
         delete:{ method:'DELETE',params:{id:'@id'}},
-        query: { method: 'GET', isArray: true }
+        query: { method: 'GET', isArray: true },
+        update:{ method: 'PUT'}
     });
 });
 angular.module('personService',['ngResource']).factory('Persons',function($resource){

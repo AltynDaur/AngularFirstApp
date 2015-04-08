@@ -10,9 +10,7 @@ import java.util.List;
 public class Person {
     @Id
     private int id;
-    @Pattern(regexp = "\\w+")
     private String firstName;
-    @Pattern(regexp = "\\w+")
     private String lastName;
     @OneToMany(fetch = FetchType.EAGER)
     private List<Person> needForGift;

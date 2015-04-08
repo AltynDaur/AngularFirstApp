@@ -13,6 +13,7 @@ public class Wish {
     private int id;
     private String what;
     private int count;
+    private int santasAnswer;
 
     public int getId() {
         return id;
@@ -36,6 +37,14 @@ public class Wish {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getSantasAnswer() {
+        return santasAnswer;
+    }
+
+    public void setSantasAnswer(int santasAnswer) {
+        this.santasAnswer = santasAnswer;
     }
 
     @Override

@@ -17,3 +17,6 @@
     margin: 2px 10px;
     display: inline
 }
+.crossline{
+    text-decoration: line-through;
+}

@@ -64,17 +64,27 @@ public class WishService {
         return null;
     }
 
+    @PUT
+    public Response updateWish(Wish wish){
+        Response.ResponseBuilder builder = null;
+        try {
+            wishDAO.update(wish);
+            builder = Response.ok();
+        } catch (Exception e) {
+            Map<String,Object> errors = new HashMap<>();
+            errors.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(errors);
+        }
+        return  builder.build();
+    }
+
     @DELETE
     @Path("/{id:[0-9]+}")
     public Response deleteWishById(@PathParam("id") int id, @HeaderParam("authorization") final String token){
         Response.ResponseBuilder builder = null;
 
         try {
-            Map<String,Object> personFromToken = getPersonFromToken(token);
-            Person thisPerson = personDAO.getById((Integer) personFromToken.get("id"));
-            Wish currentWish = wishDAO.getById(id);
-            thisPerson.getMyWishes().remove(currentWish);
-            personDAO.update(thisPerson);
+            wishDAO.delete(id);
             builder = Response.ok();
         } catch (Exception e) {
             Map<String,Object> errors = new HashMap<>();

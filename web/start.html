@@ -1,20 +1,17 @@
 <script src="resources/js/controllers/carousel.js"></script>
 <div class="jumbotron">
-    <h1 align="center">Who are you? I'm really wanna know!</h1>
+    <h1 align="center">Ho! Ho! Ho! Merry <span class="crossline">Christmas</span> any Holiday!</h1>
 </div>
 
 <div ng-controller="carouselCtrl">
     <div style="height: 305px">
         <carousel interval="myInterval">
             <slide ng-repeat="slide in slides" active="slide.active">
-                <a href="{{slide.href}}">
-                <img ng-src="{{slide.image}}" style="margin:auto;">
-
-                <div class="carousel-caption">
-
+                <a ui-sref="{{slide.href}}">
+                    <img ng-src="{{slide.image}}" style="margin:auto;">
+                    <div class="carousel-caption">
                         <h3>{{slide.text}}</h3>
-
-                </div>
+                    </div>
                 </a>
             </slide>
         </carousel>

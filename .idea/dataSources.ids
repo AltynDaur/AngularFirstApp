@@ -42,6 +42,7 @@
       <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="COUNT" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="WHAT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SANTASANSWER" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="CONSTRAINT_2" columns="ID"/>
       <exported-key name="FK_MW5X0BU23890V7F54XF8A4FNB" table="PERSON_WISH" schema="PUBLIC" catalog="SCHEDULEDB" columns="MYWISHES_ID"/>
     </table>
