@@ -1,0 +1,10 @@
+<form class="form-inline">
+    <div class="form-group">
+        <label>Wanna create gift room?</label>
+        <input placeholder="Enter room name" ng-model="room.name">
+    </div>
+    <button type="button" class="btn btn-success" ng-click="addRoom()">Create room</button>
+    <ul ng-hide="!errorMessages" class="error">
+        <li ng-repeat="message in errorMessages">{{message}}</li>
+    </ul>
+</form>
