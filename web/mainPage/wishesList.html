@@ -28,8 +28,8 @@
                             <td>{{wish.what}}</td>
                             <td>{{wish.count | number}}</td>
                             <td>
-                                <span class="glyphicon glyphicon-thumbs-up" ng-show="{{wish.santasAnswer}}"></span>
-                                <span class="glyphicon glyphicon-thumbs-down" ng-show="{{!wish.santasAnswer}}"></span>
+                                <span class="glyphicon glyphicon-thumbs-up" ng-if="wish.santasAnswer === 1"></span>
+                                <span class="glyphicon glyphicon-thumbs-down" ng-if="wish.santasAnswer === -1"></span>
                                 <span class="glyphicon glyphicon-eye-close" ng-if="wish.santasAnswer === 0"></span>
                             </td>
                             <td>
@@ -58,18 +58,32 @@
                             <td>{{wish.what}}</td>
                             <td>{{wish.count | number}}</td>
                             <td>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-success" ng-click="updateAnswer(true,wish)">
+                                <div class="btn-group" ng-if="wish.santasAnswer === 0">
+                                    <button type="button" class="btn btn-success" ng-click="updateAnswer(1,wish)">
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </button>
-                                    <button type="button" class="btn btn-danger" ng-click="updateAnswer(false, wish)">
+                                    <button type="button" class="btn btn-danger" ng-click="updateAnswer(-1, wish)">
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </button>
                                 </div>
+                                <span class="glyphicon glyphicon-ok" ng-if="wish.santasAnswer === 1"></span>
+                                <span class="glyphicon glyphicon-remove" ng-if="wish.santasAnswer === -1"></span>
                             </td>
                         </tr>
                     </table>
                 </div>
+            </tab>
+            <tab heading="Gift Room" ng-controller="roomController">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label>Wanna create gift room?</label>
+                        <input placeholder="Enter room name" ng-model="room.name">
+                    </div>
+                    <button type="button" class="btn btn-success" ng-click="addRoom()">Create room</button>
+                    <ul ng-hide="!errorMessages" class="error">
+                        <li ng-repeat="message in errorMessages">{{message}}</li>
+                    </ul>
+                </form>
             </tab>
         </tabset>
 

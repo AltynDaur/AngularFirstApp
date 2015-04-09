@@ -54,9 +54,8 @@ public class Wish {
 
         Wish wish = (Wish) o;
 
-        if (id != wish.id) return false;
+        return id == wish.id;
 
-        return true;
     }
 
     @Override

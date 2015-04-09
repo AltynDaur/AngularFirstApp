@@ -2,21 +2,30 @@
 <head>
     <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="resources/css/someStyleSheets.css">
+
     <script src="resources/js/angular/angular.js"></script>
-    <script src="resources/js/app.js"></script>
-    <script src="resources/js/controllers/carousel.js"></script>
-    <script src="resources/js/controllers/login.js"></script>
     <script src="resources/js/angular/angular-resources.js"></script>
     <script src="resources/js/angular/angular-animate.js"></script>
     <script src="resources/js/angular/angular-storage.js"></script>
     <script src="resources/js/angular/angular-ui-router.js"></script>
     <script src="resources/js/angular/angular-jwt.js"></script>
-    <script src="resources/js/services.js"></script>
     <script src="resources/js/angular/angular-ui.github.io_bootstrap_ui-bootstrap-tpls-0.12.0.js"></script>
-    <script src="resources/js/controllers/register.js"></script>
-    <script src="resources/js/controllers/wishes.js"></script>
-    <script src="resources/js/controllers/wishesList.js"></script>
-    <script src="resources/js/controllers/santaStuff.js"></script>
+
+    <script src="app.js"></script>
+    <script src="login/login.module.js"></script>
+    <script src="login/login.controller.js"></script>
+    <script src="mainPage/mainPage.module.js"></script>
+    <script src="mainPage/giftRoom/giftRoom.module.js"></script>
+    <script src="mainPage/giftRoom/giftRoom.controller.js"></script>
+    <script src="mainPage/santasStuff/santaStuff.module.js"></script>
+    <script src="mainPage/santasStuff/santaStuff.controller.js"></script>
+    <script src="mainPage/wishes/wishes.module.js"></script>
+    <script src="mainPage/wishes/wishes.controller.js"></script>
+    <script src="register/register.module.js"></script>
+    <script src="register/register.controller.js"></script>
+    <script src="services/services.js"></script>
+    <script src="start/start.module.js"></script>
+    <script src="start/start.controller.js"></script>
 </head>
 <body>
     <section ui-view></section>

@@ -11,3 +11,7 @@ angular.module('wishService',['ngResource']).factory('Wishes',function($resource
 angular.module('personService',['ngResource']).factory('Persons',function($resource){
     return $resource('secretSanta/person/:id',{});
 });
+
+angular.module('roomService',['ngResource']).factory('Rooms',function($resource){
+    return $resource('secretSanta/room/:id',[]);
+});
