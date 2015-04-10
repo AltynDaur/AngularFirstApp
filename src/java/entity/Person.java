@@ -57,4 +57,6 @@ public class Person {
     public void setMyWishes(List<Wish> myWishes) {
         this.myWishes = myWishes;
     }
+
+
 }

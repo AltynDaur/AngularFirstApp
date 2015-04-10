@@ -2,16 +2,15 @@
     angular.module('giftRoom').controller('roomController', RoomController);
 
     function RoomController ($scope,Rooms) {
-        $scope.refresh = function(){
+        refresh = function(){
             $scope.rooms = Rooms.query();
         };
 
-        $scope.addRoom = function () {
-            Rooms.save($scope.room,function(result){
-
-            },function(error){
+        $scope.enterRoom = function(roomId){
+            Rooms.update(roomId,function(result){
 
             });
-        }
+        };
+        refresh();
     }
 })();

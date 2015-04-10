@@ -1,3 +1,3 @@
 (function(){
-    angular.module('mainPage',['wishes','santaStuff','giftRoom']);
+    angular.module('mainPage',['wishes','santaStuff','giftRoom', 'myGiftRooms']);
 })();

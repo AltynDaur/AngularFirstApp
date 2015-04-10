@@ -1,0 +1,32 @@
+<form class="form-inline">
+    <div class="form-group">
+        <label>Wanna create gift room?</label>
+        <input placeholder="Enter room name" ng-model="room.name">
+    </div>
+    <button type="button" class="btn btn-success form-group" ng-click="addRoom()">Create room</button>
+    <ul ng-hide="!errorMessages" class="form-group">
+        <li ng-repeat="message in errorMessages">{{message}}</li>
+    </ul>
+</form>
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <th>Room #</th>
+            <th>Room name</th>
+            <th>Room creator</th>
+            <th>People in the room</th>
+            <th>Check the room</th>
+        </tr>
+        <tr ng-repeat="room in myRooms">
+            <td>{{room.id}}</td>
+            <td>{{room.name}}</td>
+            <td>{{room.admin.firstName}} {{room.admin.lastName}}</td>
+            <td>{{room.roomMates.length}}</td>
+            <td>
+                <button type="button" class="btn btn-success" ng-click="checkRoom(room.id)">
+                    <span class="glyphicon glyphicon-tent"></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

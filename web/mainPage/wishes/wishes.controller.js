@@ -2,19 +2,16 @@
     angular.module('wishes').controller('WishesController',WishesController);
 
     function WishesController($scope,Wishes){
-        $scope.refresh = function () {
+        refresh = function () {
             $scope.wishes = Wishes.query();
         };
 
-        $scope.errorMessages = '';
-
         $scope.addWish = function () {
-            $scope.errorMessages = '';
             var count = parseInt($scope.wish.count);
             if(typeof count === 'number' && count > 0){
                 Wishes.save($scope.wish,function(currentWish){
                     $scope.wishes.push(currentWish);
-                    $scope.refresh();
+                    refresh();
                     console.log(currentWish);
                 }),function(error){
                     $scope.errorMessages = [ 'Unknown  server error' ];
@@ -31,7 +28,7 @@
                 console.log(wishId+' successfully deleted');
             });
         };
-        $scope.refresh();
+        refresh();
     };
 
 })();

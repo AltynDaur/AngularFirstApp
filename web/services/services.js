@@ -13,5 +13,8 @@ angular.module('personService',['ngResource']).factory('Persons',function($resou
 });
 
 angular.module('roomService',['ngResource']).factory('Rooms',function($resource){
-    return $resource('secretSanta/room/:id',[]);
+    return $resource('secretSanta/room/:myRooms',{},{
+        myRooms:{ method:'GET', isArray:true, params:{myRooms:'myRooms'}},
+        update:{ method: 'PUT'}
+    });
 });

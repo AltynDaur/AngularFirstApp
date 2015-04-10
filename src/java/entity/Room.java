@@ -1,9 +1,6 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
@@ -11,11 +8,12 @@ import java.util.List;
 @XmlRootElement
 public class Room {
     @Id
-    private int id;
+    @GeneratedValue
+    private Integer id;
     private String name;
     @OneToOne
     private Person admin;
-    @OneToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Person> roomMates;
 
     public int getId() {
@@ -34,13 +32,6 @@ public class Room {
         this.name = name;
     }
 
-    public Person getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Person admin) {
-        this.admin = admin;
-    }
 
     public List<Person> getRoomMates() {
         return roomMates;
@@ -48,5 +39,17 @@ public class Room {
 
     public void setRoomMates(List<Person> roomMates) {
         this.roomMates = roomMates;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Person getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Person admin) {
+        this.admin = admin;
     }
 }

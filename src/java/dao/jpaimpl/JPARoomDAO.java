@@ -35,13 +35,13 @@ public class JPARoomDAO implements RoomDAO{
     }
 
     @Override
-    public void add(Room room) {
-        entityManager.merge(room);
+    public Room add(Room room) {
+        return entityManager.merge(room);
     }
 
     @Override
-    public void update(Room room) {
-        entityManager.merge(room);
+    public Room update(Room room) {
+        return entityManager.merge(room);
     }
 
     @Override
