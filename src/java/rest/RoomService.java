@@ -48,7 +48,22 @@ public class RoomService {
     public List<Room> getCurrentUserRooms(@HeaderParam("authorization") final String token){
         Map<String,Object> currentUser = getPersonFromToken(token);
         Person currentPerson = personDAO.getById((Integer) currentUser.get("id"));
-        return currentPerson.getMyRooms();//TODO
+        List<Room> allRooms = roomDAO.getAll();
+        List<Room> targetListOfRooms = new ArrayList<Room>();
+        for (int i = 0; i < allRooms.size(); i++) {
+            List<Person> allPersonFromOneRoom = allRooms.get(i).getRoomMates();
+            for (int j = 0; j < allPersonFromOneRoom.size(); j++) {
+                boolean addFlag = false;
+                if(allPersonFromOneRoom.get(j).equals(currentPerson)){
+                    targetListOfRooms.add(allRooms.get(i));
+                    addFlag = true;
+                }
+                if (addFlag){
+                    break;
+                }
+            }
+        }
+        return targetListOfRooms;//TODO need to test
     }
 
     @POST
@@ -65,8 +80,6 @@ public class RoomService {
             roomMates.add(creatorFromDB);
             room.setRoomMates(roomMates);
             room = roomDAO.add(room);
-            creatorFromDB.getMyRooms().add(room);
-            personDAO.update(creatorFromDB);
             builder = Response.ok();
         } catch (Exception e) {
             Map<String, String> responseObj = new HashMap<>();
@@ -84,10 +97,8 @@ public class RoomService {
             Map<String,Object> currentPerson = getPersonFromToken(token);
             Room currentRoom = roomDAO.getById(roomId);
             Person personFromDB = personDAO.getById((Integer) currentPerson.get("id"));
-            personFromDB.getMyRooms().add(currentRoom);
             currentRoom.getRoomMates().add(personFromDB);
             currentRoom = roomDAO.update(currentRoom);
-            personDAO.update(personFromDB);
         } catch (Exception e) {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
