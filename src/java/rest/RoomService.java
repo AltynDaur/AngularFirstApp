@@ -63,7 +63,7 @@ public class RoomService {
                 }
             }
         }
-        return targetListOfRooms;//TODO need to test
+        return targetListOfRooms;
     }
 
     @POST
@@ -79,6 +79,7 @@ public class RoomService {
             room.setName(roomDTO.getName());
             roomMates.add(creatorFromDB);
             room.setRoomMates(roomMates);
+            room.setAdmin(creatorFromDB);
             room = roomDAO.add(room);
             builder = Response.ok();
         } catch (Exception e) {
@@ -97,8 +98,15 @@ public class RoomService {
             Map<String,Object> currentPerson = getPersonFromToken(token);
             Room currentRoom = roomDAO.getById(roomId);
             Person personFromDB = personDAO.getById((Integer) currentPerson.get("id"));
-            currentRoom.getRoomMates().add(personFromDB);
-            currentRoom = roomDAO.update(currentRoom);
+            if(!currentRoom.getRoomMates().contains(personFromDB)){
+                currentRoom.getRoomMates().add(personFromDB);
+                currentRoom = roomDAO.update(currentRoom);
+                builder = Response.ok();
+            } else {
+                builder = Response.notModified();
+            }
+
+
         } catch (Exception e) {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());

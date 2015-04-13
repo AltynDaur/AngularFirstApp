@@ -2,16 +2,16 @@
     angular.module('myGiftRooms')
         .controller('myGiftRoomsController',myGiftRoomsController);
 
-    function myGiftRoomsController($scope,Rooms){
-        refresh = function (){
+    function myGiftRoomsController($scope,Rooms,$rootScope){
+        refreshMyRooms = function (){
             $scope.myRooms = Rooms.myRooms();
         };
         $scope.addRoom = function () {
             Rooms.save($scope.room,function(result){
-                console.log('Room added');
-                refresh();
-                $scope.room = {}
-            },function(error){
+                $scope.room = {};
+                $rootScope.$broadcast('roomsDataChanged',true);
+                $scope.errorMessages = {}}
+            ,function(error){
                 $scope.errorMessages = error;
             });
         };
@@ -19,6 +19,9 @@
         $scope.checkRoom = function(roomId){
 
         };
-        refresh();
+        $rootScope.$on('roomsDataChanged',function(event,data){
+            refreshMyRooms();
+        });
+        refreshMyRooms();
     };
 })();

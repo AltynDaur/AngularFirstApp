@@ -53,7 +53,6 @@ public class LoginService {
         result.put("lastName",person.getLastName());
         result.put("id",person.getId());
         result.put("wishesCount",person.getMyWishes().size());
-        result.put("needForGiftSize",person.getNeedForGift().size());
         return result;
     }
 }

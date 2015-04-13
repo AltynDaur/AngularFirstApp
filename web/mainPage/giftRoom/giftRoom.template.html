@@ -1,5 +1,8 @@
 
 <div>
+    <ul ng-hide="!errorMessages" class="error">
+        <li ng-repeat="message in errorMessages">{{message}}</li>
+    </ul>
     <table class="table table-bordered">
         <tr>
             <th>Room #</th>

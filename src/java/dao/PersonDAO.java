@@ -10,4 +10,6 @@ public interface PersonDAO {
     public List<Person> getAll();
     public void delete(int id);
     public void update(Person person);
+
+    public List<Person> getAllById(Integer id);
 }

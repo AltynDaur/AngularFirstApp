@@ -46,4 +46,11 @@ public class JPAPersonDAO implements PersonDAO {
     public void update(Person person) {
         entityManager.merge(person);
     }
+
+    @Override
+    public List<Person> getAllById(Integer id) {
+        Person currentPerson = entityManager.find(Person.class,id);
+
+        return currentPerson.getNeedForGift();
+    }
 }

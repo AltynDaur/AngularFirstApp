@@ -33,8 +33,8 @@ public class PersonService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Person> getAllPersonsWhoNeedForGift(@HeaderParam("authorization")final String token){
         Map<String,Object> personFromToken = getPersonFromToken(token);
-        Person currentPerson = personDAO.getById((Integer) personFromToken.get("id"));
-        return currentPerson.getNeedForGift();
+        List<Person> currentPersons = personDAO.getAllById((Integer) personFromToken.get("id"));
+        return currentPersons;
     }
 
     private Map<String, Object> getPersonFromToken(String authorizationHeader) {

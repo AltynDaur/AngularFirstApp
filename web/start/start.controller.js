@@ -4,12 +4,12 @@
             $scope.myInterval = 5000;
             var slides = $scope.slides = [
                 {
-                    'image':'/AngularFirstApp/resources/images/teacher.jpg',
+                    'image':'/AngularFirstApp/resources/images/mask.jpg',
                     'text':'Santa',
                     'href':'login'
                 },
                 {
-                    'image':'/AngularFirstApp/resources/images/chair.jpg',
+                    'image':'/AngularFirstApp/resources/images/secret.jpg',
                     'text':'Register',
                     'href':'register'
                 }

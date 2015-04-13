@@ -11,6 +11,7 @@ import entity.Wish;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -80,10 +81,14 @@ public class WishService {
 
     @DELETE
     @Path("/{id:[0-9]+}")
+    @Transactional
     public Response deleteWishById(@PathParam("id") int id, @HeaderParam("authorization") final String token){
         Response.ResponseBuilder builder = null;
 
         try {
+            Map<String,Object> personFromToken = getPersonFromToken(token);
+            Person personFromDB = personDAO.getById((Integer) personFromToken.get("id"));
+            personFromDB.getMyWishes().remove(wishDAO.getById(id));
             wishDAO.delete(id);
             builder = Response.ok();
         } catch (Exception e) {

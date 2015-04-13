@@ -3,6 +3,7 @@ package entity;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.List;
 
 @Entity
@@ -13,6 +14,7 @@ public class Person {
     private String firstName;
     private String lastName;
     @OneToMany(fetch = FetchType.EAGER)
+
     private List<Person> needForGift;
     @OneToMany(fetch = FetchType.EAGER)
     private List<Wish> myWishes;
@@ -42,6 +44,7 @@ public class Person {
         this.lastName = lastName;
     }
 
+    @XmlTransient
     public List<Person> getNeedForGift() {
         return needForGift;
     }
@@ -58,5 +61,20 @@ public class Person {
         this.myWishes = myWishes;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Person person = (Person) o;
+
+        if (id != person.id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }

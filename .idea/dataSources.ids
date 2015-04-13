@@ -20,9 +20,9 @@
       <primary-key name="CONSTRAINT_8" columns="ID"/>
       <exported-key name="FK_INQ4XM3I524CMIA3RP65FX39W" table="PERSON_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" columns="PERSON_ID"/>
       <exported-key name="FK_SIDM2BYMGUJMWYE0QVLLT4PO8" table="PERSON_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" columns="NEEDFORGIFT_ID"/>
-      <exported-key name="FK_AWUJCCRR509XUKX1FDMHSSACU" table="PERSON_ROOM" schema="PUBLIC" catalog="SCHEDULEDB" columns="ROOMMATES_ID"/>
       <exported-key name="FK_IQNBWS8UN9GTV7ROU9R3OQ8IG" table="PERSON_WISH" schema="PUBLIC" catalog="SCHEDULEDB" columns="PERSON_ID"/>
       <exported-key name="FK_9DAYAQRMGNMN21PSA985MN1E3" table="ROOM" schema="PUBLIC" catalog="SCHEDULEDB" columns="ADMIN_ID"/>
+      <exported-key name="FK_58E2HFV8HCVR3HM2DULOANFBL" table="ROOM_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" columns="ROOMMATES_ID"/>
     </table>
     <table name="PERSON_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
       <column name="PERSON_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
@@ -31,14 +31,6 @@
       <foreign-key name="FK_SIDM2BYMGUJMWYE0QVLLT4PO8" columns="NEEDFORGIFT_ID" ref-table="PERSON" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
       <index name="UK_SIDM2BYMGUJMWYE0QVLLT4PO8_INDEX_1" unique="true" columns="NEEDFORGIFT_ID"/>
       <index name="FK_INQ4XM3I524CMIA3RP65FX39W_INDEX_1" unique="false" columns="PERSON_ID"/>
-    </table>
-    <table name="PERSON_ROOM" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
-      <column name="ROOMMATES_ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="MYROOMS_ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <foreign-key name="FK_AWUJCCRR509XUKX1FDMHSSACU" columns="ROOMMATES_ID" ref-table="PERSON" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
-      <foreign-key name="FK_PHRLC0QTG5LXGBR9HX5JKMD2M" columns="MYROOMS_ID" ref-table="ROOM" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
-      <index name="FK_AWUJCCRR509XUKX1FDMHSSACU_INDEX_6" unique="false" columns="ROOMMATES_ID"/>
-      <index name="FK_PHRLC0QTG5LXGBR9HX5JKMD2M_INDEX_6" unique="false" columns="MYROOMS_ID"/>
     </table>
     <table name="PERSON_WISH" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
       <column name="PERSON_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
@@ -54,8 +46,16 @@
       <column name="ADMIN_ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="CONSTRAINT_26" columns="ID"/>
       <foreign-key name="FK_9DAYAQRMGNMN21PSA985MN1E3" columns="ADMIN_ID" ref-table="PERSON" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
-      <exported-key name="FK_PHRLC0QTG5LXGBR9HX5JKMD2M" table="PERSON_ROOM" schema="PUBLIC" catalog="SCHEDULEDB" columns="MYROOMS_ID"/>
+      <exported-key name="FK_6J06UNCXA776EGEL48KT41XH0" table="ROOM_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" columns="ROOM_ID"/>
       <index name="FK_9DAYAQRMGNMN21PSA985MN1E3_INDEX_2" unique="false" columns="ADMIN_ID"/>
+    </table>
+    <table name="ROOM_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
+      <column name="ROOM_ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ROOMMATES_ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="FK_58E2HFV8HCVR3HM2DULOANFBL" columns="ROOMMATES_ID" ref-table="PERSON" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FK_6J06UNCXA776EGEL48KT41XH0" columns="ROOM_ID" ref-table="ROOM" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FK_58E2HFV8HCVR3HM2DULOANFBL_INDEX_4" unique="false" columns="ROOMMATES_ID"/>
+      <index name="FK_6J06UNCXA776EGEL48KT41XH0_INDEX_4" unique="false" columns="ROOM_ID"/>
     </table>
     <table name="WISH" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
       <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
