@@ -115,6 +115,12 @@ public class RoomService {
         return builder.build();
     }
 
+    @PUT
+    @Path("/removePerson")
+    public Response removePersonFromRoom(){
+        return null;
+    }
+
     private Map<String, Object> getPersonFromToken(String authorizationHeader) {
         String result = null;
         String[] parts = authorizationHeader.split(" ");

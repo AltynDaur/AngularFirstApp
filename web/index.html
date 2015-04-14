@@ -10,6 +10,10 @@
     <script src="resources/js/angular/angular-ui-router.js"></script>
     <script src="resources/js/angular/angular-jwt.js"></script>
     <script src="resources/js/angular/angular-ui.github.io_bootstrap_ui-bootstrap-tpls-0.12.0.js"></script>
+    <script src="resources/js/angular/angular-translate.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
     <script src="app.js"></script>
 
@@ -25,6 +29,8 @@
     <script src="mainPage/myGiftRooms/myGiftRooms.module.js"></script>
     <script src="mainPage/myGiftRooms/myGiftRooms.controller.js"></script>
     <script src="mainPage/myGiftRooms/myGiftRooms.directive.js"></script>
+    <script src="mainPage/myGiftRooms/roomModal.controller.js"></script>
+
 
     <script src="mainPage/santasStuff/santaStuff.module.js"></script>
     <script src="mainPage/santasStuff/santaStuff.controller.js"></script>
@@ -41,8 +47,16 @@
 
     <script src="start/start.module.js"></script>
     <script src="start/start.controller.js"></script>
+
+    <script src="appFooter/appFooter.module.js"></script>
+    <script src="appFooter/appFooter.controller.js"></script>
+    <script src="appFooter/appFooter.directive.js"></script>
+
 </head>
 <body>
     <section ui-view></section>
+    <footer>
+        <app-footer></app-footer>
+    </footer>
 </body>
 </html>

@@ -1344,7 +1344,7 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-
+    height: 100%;
     background-image: url("/AngularFirstApp/resources/images/background.jpg");
     background-color: #afd9ee;
 }

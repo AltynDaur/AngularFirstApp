@@ -5,12 +5,12 @@
             var slides = $scope.slides = [
                 {
                     'image':'/AngularFirstApp/resources/images/mask.jpg',
-                    'text':'Santa',
+                    'text':'SECRETSANTA',
                     'href':'login'
                 },
                 {
                     'image':'/AngularFirstApp/resources/images/secret.jpg',
-                    'text':'Register',
+                    'text':'REGISTER',
                     'href':'register'
                 }
             ];

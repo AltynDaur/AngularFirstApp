@@ -23,10 +23,12 @@
             <td>{{room.admin.firstName}} {{room.admin.lastName}}</td>
             <td>{{room.roomMates.length}}</td>
             <td>
-                <button type="button" class="btn btn-success" ng-click="checkRoom(room.id)">
+                <button type="button" class="btn btn-success" ng-click="open(room)">
                     <span class="glyphicon glyphicon-tent"></span>
                 </button>
             </td>
+
         </tr>
+
     </table>
 </div>

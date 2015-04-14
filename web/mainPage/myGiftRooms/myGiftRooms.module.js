@@ -1,3 +1,3 @@
 (function () {
-    angular.module('myGiftRooms',['roomService']);
+    angular.module('myGiftRooms',['ui.bootstrap','roomService']);
 })();

@@ -20,3 +20,11 @@
 .crossline{
     text-decoration: line-through;
 }
+footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Правый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    background: #666; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    width: 100%;
+}
