@@ -1,5 +1,8 @@
 package entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -14,9 +17,10 @@ public class Person {
     private String firstName;
     private String lastName;
     @OneToMany(fetch = FetchType.EAGER)
-
+    @Fetch(FetchMode.SUBSELECT)
     private List<Person> needForGift;
     @OneToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Wish> myWishes;
 
 

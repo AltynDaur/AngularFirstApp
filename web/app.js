@@ -52,7 +52,11 @@
             REPEATPASS: 'Repeat password',
             REPEATYPASS: 'Repeat your password',
             SIGNIN: 'Sign in',
-            BACK: 'Oops, I think, I should go back!'
+            BACK: 'Oops, I think, I should go back!',
+            AUTHOR: 'Altynbekov Dauren',
+            AUTHORSCITY: 'Karaganda city',
+            GITHUBLINK: 'Fork this project on GitHub',
+            CHANGELANGUAGE: 'Change language'
         });
         $translateProvider.translations('ru', {
             TITLE1: 'Счастливого ',
@@ -75,7 +79,12 @@
             REPEATPASS: 'Повторите пароль',
             REPEATYPASS: 'Повторите свой пароль',
             SIGNIN: 'Войти',
-            BACK: 'Ой! Кажется мне надо назад!'
+            BACK: 'Ой! Кажется мне надо назад!',
+            AUTHOR: 'Алтынбеков Даурен',
+            AUTHORSCITY: 'г. Караганда',
+            GITHUBLINK: 'Просмотрите этот проект на GitHub',
+            CHANGELANGUAGE: 'Смена языка'
+
         });
         $translateProvider.preferredLanguage('en');
     };

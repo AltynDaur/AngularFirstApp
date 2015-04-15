@@ -2,7 +2,7 @@
     angular.module('login')
         .controller('loginController',LoginController);
 
-    function LoginController($scope,$http,store,$state){
+    function LoginController($scope,$http,store,$state, jwtHelper, $rootScope){
             $scope.loginPerson = {};
             $scope.errorMessages = '';
             $scope.login = function(){
@@ -13,6 +13,8 @@
                 }).then(function(response){
                     if(response.data.token !== "null"){
                         store.set('jwt',response.data.token);
+                        currentUser = jwtHelper.decodeToken(response.data.token);
+                        $rootScope.currentUserID = currentUser.id;
                         $state.go('wishesList');
                     }
                     else{

@@ -8,6 +8,7 @@ import dao.RoomDAO;
 import dto.RoomDTO;
 import entity.Person;
 import entity.Room;
+import randomshuffle.RandomShuffle;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -19,10 +20,7 @@ import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 @RequestScoped
@@ -52,15 +50,8 @@ public class RoomService {
         List<Room> targetListOfRooms = new ArrayList<Room>();
         for (int i = 0; i < allRooms.size(); i++) {
             List<Person> allPersonFromOneRoom = allRooms.get(i).getRoomMates();
-            for (int j = 0; j < allPersonFromOneRoom.size(); j++) {
-                boolean addFlag = false;
-                if(allPersonFromOneRoom.get(j).equals(currentPerson)){
-                    targetListOfRooms.add(allRooms.get(i));
-                    addFlag = true;
-                }
-                if (addFlag){
-                    break;
-                }
+            if(allPersonFromOneRoom.contains(currentPerson)){
+                targetListOfRooms.add(allRooms.get(i));
             }
         }
         return targetListOfRooms;
@@ -86,6 +77,23 @@ public class RoomService {
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+        return builder.build();
+    }
+
+    @POST
+    @Path("/shuffle")
+    public Response shuffleSecretSantas(int roomId){
+        Response.ResponseBuilder builder = null;
+        try {
+            Room currentRoom = roomDAO.getById(roomId);
+            currentRoom.setRoomMates(RandomShuffle.shuffleSantasToPersons(currentRoom.getRoomMates()));
+            roomDAO.update(currentRoom);
+            builder = Response.ok();
+        } catch (Exception e) {
+            Map<String, Object> errors = new HashMap<>();
+            errors.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(errors);
         }
         return builder.build();
     }

@@ -49,7 +49,6 @@ public class RegisterService {
             person.setFirstName(registerPersonDTO.getFirstName());
             person.setLastName(registerPersonDTO.getLastName());
             person = personDAO.add(person);
-            findSecretSanta(person);
             builder = Response.ok();
         } else {
             Map<String, String> responseObj = new HashMap<>();

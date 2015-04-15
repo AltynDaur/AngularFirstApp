@@ -1,5 +1,8 @@
 package entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
@@ -14,6 +17,7 @@ public class Room {
     @OneToOne
     private Person admin;
     @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Person> roomMates;
 
     public int getId() {
