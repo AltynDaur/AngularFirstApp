@@ -6,7 +6,9 @@
         $scope.room = room;
 
         $scope.shuffle = function () {
-
+            Rooms.shuffle(room.id, function(response){
+                console.log('Room shuffled');
+            });
         };
 
         $scope.ok = function () {

@@ -1,6 +1,6 @@
 <div class="modal-header">
     <h3 class="modal-title">{{room.name}}</h3>
-    <button class="btn btn-primary" ng-click="shuffle()" ng-show="currentUserID === room.admin.id">Shuffle secret Santas</button>
+    <button class="btn btn-primary" ng-click="shuffle()" ng-show="currentUserID === room.admin.id && !room.isShuffled">Shuffle secret Santas</button>
 </div>
 <div class="modal-body">
     <table class="table table-bordered">

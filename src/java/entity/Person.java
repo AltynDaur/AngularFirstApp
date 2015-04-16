@@ -16,7 +16,7 @@ public class Person {
     private int id;
     private String firstName;
     private String lastName;
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Fetch(FetchMode.SUBSELECT)
     private List<Person> needForGift;
     @OneToMany(fetch = FetchType.EAGER)

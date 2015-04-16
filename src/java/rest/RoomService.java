@@ -71,6 +71,7 @@ public class RoomService {
             roomMates.add(creatorFromDB);
             room.setRoomMates(roomMates);
             room.setAdmin(creatorFromDB);
+            room.setShuffled(false);
             room = roomDAO.add(room);
             builder = Response.ok();
         } catch (Exception e) {
@@ -88,6 +89,7 @@ public class RoomService {
         try {
             Room currentRoom = roomDAO.getById(roomId);
             currentRoom.setRoomMates(RandomShuffle.shuffleSantasToPersons(currentRoom.getRoomMates()));
+            currentRoom.setShuffled(true);
             roomDAO.update(currentRoom);
             builder = Response.ok();
         } catch (Exception e) {
@@ -95,7 +97,7 @@ public class RoomService {
             errors.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(errors);
         }
-        return builder.build();
+        return builder.build();//TODO need to test
     }
 
     @PUT

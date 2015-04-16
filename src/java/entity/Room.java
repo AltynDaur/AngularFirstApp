@@ -16,9 +16,10 @@ public class Room {
     private String name;
     @OneToOne
     private Person admin;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @Fetch(FetchMode.SUBSELECT)
     private List<Person> roomMates;
+    private boolean isShuffled;
 
     public int getId() {
         return id;
@@ -55,5 +56,13 @@ public class Room {
 
     public void setAdmin(Person admin) {
         this.admin = admin;
+    }
+
+    public boolean isShuffled() {
+        return isShuffled;
+    }
+
+    public void setShuffled(boolean isShuffled) {
+        this.isShuffled = isShuffled;
     }
 }
