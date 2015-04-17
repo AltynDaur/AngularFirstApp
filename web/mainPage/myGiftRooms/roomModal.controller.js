@@ -6,9 +6,21 @@
         $scope.room = room;
 
         $scope.shuffle = function () {
-            Rooms.shuffle(room.id, function(response){
+            Rooms.shuffle({id:room.id}, function(response){
                 console.log('Room shuffled');
             });
+        };
+
+        $scope.removePerson = function(personId){
+            Rooms.removePerson({id:room.id, personId:personId},function(response){
+                console.log('User '+ currentUserID+'deleted from room #'+room.id);
+            })
+        };
+
+        $scope.leaveRoom = function(){
+            Rooms.removePerson({id:room.id, personId:currentUserID},function(response){
+                console.log('User '+ currentUserID+'deleted from room #'+room.id);
+            })
         };
 
         $scope.ok = function () {

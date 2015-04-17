@@ -13,7 +13,9 @@ import randomshuffle.RandomShuffle;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.websocket.server.*;
 import javax.ws.rs.*;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
@@ -97,7 +99,7 @@ public class RoomService {
             errors.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(errors);
         }
-        return builder.build();//TODO need to test
+        return builder.build();
     }
 
     @PUT
@@ -126,9 +128,18 @@ public class RoomService {
     }
 
     @PUT
-    @Path("/removePerson")
-    public Response removePersonFromRoom(){
-        return null;
+    @Path("/{roomId}/removePerson/{personId}")
+    public Response removePersonFromRoom(@PathParam("roomId") int roomId, @PathParam("personId") int personId){
+        Response.ResponseBuilder builder = null;
+        Room currentRoom = roomDAO.getById(roomId);
+        Person currentPerson = personDAO.getById(personId);
+        if(currentRoom.getRoomMates().remove(currentPerson)){
+            roomDAO.update(currentRoom);
+            builder = Response.ok();
+        } else {
+            builder = Response.status(Response.Status.BAD_REQUEST);
+        }
+        return builder.build();
     }
 
     private Map<String, Object> getPersonFromToken(String authorizationHeader) {

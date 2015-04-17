@@ -13,9 +13,10 @@ angular.module('personService',['ngResource']).factory('Persons',function($resou
 });
 
 angular.module('roomService',['ngResource']).factory('Rooms',function($resource){
-    return $resource('secretSanta/room/:myRooms',{},{
-        myRooms:{ method:'GET', isArray:true, params:{myRooms:'myRooms'}},
+    return $resource('secretSanta/room/:id/:action/:nextId',{},{
+        myRooms:{ method:'GET', isArray:true, params:{action:'myRooms'}},
         update:{ method: 'PUT'},
-        shuffle:{ method: 'POST', params:{myRooms: 'shuffle'}}
+        shuffle:{ method: 'POST', params:{action: 'shuffle', id:'@id'}},
+        removePerson: {method: 'PUT', params: {action: 'removePerson',id:'@id',nextId:'@personId'}}
     });
 });
