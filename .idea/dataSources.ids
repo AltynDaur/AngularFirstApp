@@ -18,9 +18,19 @@
       <column name="FIRSTNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="LASTNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="CONSTRAINT_8" columns="ID"/>
+      <exported-key name="FK_INQ4XM3I524CMIA3RP65FX39W" table="PERSON_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" columns="PERSON_ID"/>
+      <exported-key name="FK_SIDM2BYMGUJMWYE0QVLLT4PO8" table="PERSON_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" columns="NEEDFORGIFT_ID"/>
       <exported-key name="FK_IQNBWS8UN9GTV7ROU9R3OQ8IG" table="PERSON_WISH" schema="PUBLIC" catalog="SCHEDULEDB" columns="PERSON_ID"/>
       <exported-key name="FK_9DAYAQRMGNMN21PSA985MN1E3" table="ROOM" schema="PUBLIC" catalog="SCHEDULEDB" columns="ADMIN_ID"/>
       <exported-key name="FK_58E2HFV8HCVR3HM2DULOANFBL" table="ROOM_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" columns="ROOMMATES_ID"/>
+    </table>
+    <table name="PERSON_PERSON" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
+      <column name="PERSON_ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="NEEDFORGIFT_ID" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="FK_INQ4XM3I524CMIA3RP65FX39W" columns="PERSON_ID" ref-table="PERSON" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FK_SIDM2BYMGUJMWYE0QVLLT4PO8" columns="NEEDFORGIFT_ID" ref-table="PERSON" ref-schema="PUBLIC" ref-catalog="SCHEDULEDB" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FK_INQ4XM3I524CMIA3RP65FX39W_INDEX_1" unique="false" columns="PERSON_ID"/>
+      <index name="FK_SIDM2BYMGUJMWYE0QVLLT4PO8_INDEX_1" unique="false" columns="NEEDFORGIFT_ID"/>
     </table>
     <table name="PERSON_WISH" schema="PUBLIC" catalog="SCHEDULEDB" type="TABLE">
       <column name="PERSON_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>

@@ -56,7 +56,7 @@ public class Person {
     public void setNeedForGift(List<Person> needForGift) {
         this.needForGift = needForGift;
     }
-
+    @XmlTransient
     public List<Wish> getMyWishes() {
         return myWishes;
     }

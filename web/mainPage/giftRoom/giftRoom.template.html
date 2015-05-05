@@ -10,7 +10,7 @@
             <th>People in the room</th>
             <th>Enter the room</th>
         </tr>
-        <tr ng-repeat="room in rooms">
+        <tr ng-repeat="room in rooms" ng-hide="room.isShuffled">
             <td>{{room.id}}</td>
             <td>{{room.name}}</td>
             <td>{{room.roomMates.length}}</td>

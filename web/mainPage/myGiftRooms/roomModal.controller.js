@@ -2,12 +2,13 @@
     angular.module('myGiftRooms')
         .controller('roomModalController', roomModalController);
 
-    function roomModalController($scope, $modalInstance, room,Rooms){
+    function roomModalController($scope, $modalInstance, room,Rooms,$rootScope){
         $scope.room = room;
 
         $scope.shuffle = function () {
             Rooms.shuffle({id:room.id}, function(response){
                 console.log('Room shuffled');
+                $rootScope.$emit('roomShuffled');
             });
         };
 

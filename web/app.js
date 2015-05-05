@@ -86,7 +86,7 @@
             CHANGELANGUAGE: 'Смена языка'
 
         });
-        $translateProvider.preferredLanguage('en');
+            $translateProvider.preferredLanguage('en');
     };
 
     function AppRun($state,store,$rootScope){

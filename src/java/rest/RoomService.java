@@ -85,8 +85,8 @@ public class RoomService {
     }
 
     @POST
-    @Path("/shuffle")
-    public Response shuffleSecretSantas(int roomId){
+    @Path("/{roomId}/shuffle")
+    public Response shuffleSecretSantas(@PathParam("roomId")int roomId){
         Response.ResponseBuilder builder = null;
         try {
             Room currentRoom = roomDAO.getById(roomId);

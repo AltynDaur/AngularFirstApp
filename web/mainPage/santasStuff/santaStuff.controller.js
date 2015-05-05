@@ -1,7 +1,7 @@
 (function(){
     angular.module('santaStuff',['personService']).controller('SantaController',SantaController);
 
-    function SantaController($scope,Persons,Wishes){
+    function SantaController($scope,Persons,Wishes,$rootScope){
         refresh = function(){
             $scope.needForGift = Persons.query();
         };
@@ -12,6 +12,9 @@
 
             });
         };
+        $rootScope.$on('roomShuffled',function(){
+            refresh();
+        });
         refresh();
     }
 })();

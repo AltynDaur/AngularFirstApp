@@ -40,7 +40,8 @@ public class WishService {
     public List<Wish> listOfAllWishesOfThisPerson(@HeaderParam("authorization") final String token){
         Map<String,Object> personFromToken = getPersonFromToken(token);
         Person thisPerson = personDAO.getById((int) personFromToken.get("id"));
-        return thisPerson.getMyWishes();
+        List<Wish> myWishes = thisPerson.getMyWishes();
+        return myWishes;
     }
 
     @POST
