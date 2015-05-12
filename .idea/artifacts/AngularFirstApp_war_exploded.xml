@@ -6,10 +6,12 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="AngularFirstApp" />
+          <element id="jpa-descriptors" facet="AngularFirstApp/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="com.auth0:java-jwt:2.0.1" />
           <element id="library" level="project" name="com.h2database:h2:1.3.176" />
+          <element id="library" level="project" name="com.auth0:java-jwt:2.1.0" />
         </element>
       </element>
     </root>
