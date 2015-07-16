@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1168660340">
-    <data-source source="LOCAL" name="H2 - ScheduleDB" uuid="6b42ed2b-6269-43c7-8c06-2aa16ee1b8d8">
+  <component name="DataSourceManagerImpl" format="xml" hash="2917291058">
+    <data-source source="LOCAL" name="H2 - secretSanta" uuid="11b3eba6-1db2-47f8-8871-fbde30f4b63d">
       <driver-ref>h2.embedded</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:file:$PROJECT_DIR$/../databases/Schedule/ScheduleDB</jdbc-url>
+      <jdbc-url>jdbc:h2:file:$PROJECT_DIR$/../databases/secretSanta</jdbc-url>
       <libraries />
     </data-source>
   </component>

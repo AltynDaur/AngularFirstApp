@@ -5,6 +5,7 @@ import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.List;
 
 @Entity
@@ -44,10 +45,6 @@ public class Room {
 
     public void setRoomMates(List<Person> roomMates) {
         this.roomMates = roomMates;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Person getAdmin() {

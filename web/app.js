@@ -24,7 +24,7 @@
                 requiresLogin:true
             }
         });
-        $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/');
 
         jwtInterceptorProvider.tokenGetter = function (store) {
             return store.get('jwt');
